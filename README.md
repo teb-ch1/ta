@@ -29,6 +29,8 @@
 <span>sudo service redis-server restart</span>
 <span>دستوری برای راه اندازی ردیس#</span>
 <span>sudo service redis-server start</span>
+<span>فعال کردن تبچی</span>
+<span>cd tabchi && ./bot 1</span>
 <span></span>
 <span>./bot 1</span>
 </pre>
