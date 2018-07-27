@@ -574,6 +574,28 @@ function tdcli_update_callback(data)
 							},
 						}, dl_cb, nil)
 					end
+          					return send(msg.chat_id_, msg.id_, "<i>با موفقیت فرستاده شد</i>")
+				elseif text:match("^(ارسال به پیوی) (.*)") then
+					local matches = text:match("^ارسال به پیوی (.*)")
+					local dir = redis:smembers("bot1users")
+					for i, v in pairs(dir) do
+						tdcli_function ({
+							ID = "SendMessage",
+							chat_id_ = v,
+							reply_to_message_id_ = 0,
+							disable_notification_ = 0,
+							from_background_ = 1,
+							reply_markup_ = nil,
+							input_message_content_ = {
+								ID = "InputMessageText",
+								text_ = matches,
+								disable_web_page_preview_ = 1,
+								clear_draft_ = 0,
+								entities_ = {},
+							parse_mode_ = nil
+							},
+						}, dl_cb, nil)
+					end
                     			return send(msg.chat_id_, msg.id_, "<i>با موفقیت فرستاده شد</i>")
 				elseif text:match("^(مسدودیت) (%d+)$") then
 					local matches = text:match("%d+")
